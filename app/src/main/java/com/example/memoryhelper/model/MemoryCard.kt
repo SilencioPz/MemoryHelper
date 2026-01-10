@@ -1,6 +1,5 @@
 package com.example.memoryhelper.model
 
-import androidx.compose.ui.graphics.painter.Painter
 import com.example.memoryhelper.R
 
 data class MemoryCard(
@@ -27,14 +26,14 @@ val childIcons = listOf(
     R.drawable.rocking_horse,
     R.drawable.rubber_duck,
     R.drawable.shampoo,
-    R.drawable.soccer_ball_variant,
+    R.drawable.soccer_ball,
     R.drawable.storage_box,
     R.drawable.swing,
     R.drawable.toy
 )
 
 val adultIcons = listOf(
-    R.drawable.assassins_creed,
+    R.drawable.assassins_creed_gold,
     R.drawable.counterstrike,
     R.drawable.dead_space,
     R.drawable.doom,
@@ -57,7 +56,7 @@ val adultIcons = listOf(
 )
 
 val elderlyIcons = listOf(
-    R.drawable.aid,
+    R.drawable.cooking,
     R.drawable.beret,
     R.drawable.bingo,
     R.drawable.chess,
@@ -69,12 +68,12 @@ val elderlyIcons = listOf(
     R.drawable.knitting,
     R.drawable.grandmother,
     R.drawable.mustache,
-    R.drawable.old_man_walking,
+    R.drawable.elderly_with_walker,
     R.drawable.pamela_hat,
     R.drawable.rocking_chair,
     R.drawable.santa_claus,
     R.drawable.smoking_pipe,
-    R.drawable.suspenders,
+    R.drawable.old_man_color,
     R.drawable.outfit,
-    R.drawable.food
+    R.drawable.suspenders
 )
