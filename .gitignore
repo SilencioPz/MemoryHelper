@@ -1,0 +1,43 @@
+# Arquivos do Android Studio
+*.iml
+.gradle
+local.properties
+.DS_Store
+*.log
+*.apk
+*.aab
+*.keystore
+
+# Diretórios gerados pelo Android Studio
+/.idea/
+/.idea/caches/
+/.idea/libraries/
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+/.idea/runConfigurations/
+captures/
+
+# Build do Android
+/build/
+/app/build/
+*.ap_
+*.aab
+
+# NDK
+.externalNativeBuild/
+.cxx/
+obj/
+
+# Gradle específico
+.gradle/
+gradle-app.setting
+gradle/caches/
+gradle/daemon/
+
+# Arquivos do sistema
+*.orig
+*.swp
+*~
+Thumbs.db
