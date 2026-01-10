@@ -1,10 +1,8 @@
-Memory Helper 🧠
+🧠 Memory Helper
 
-Um jogo de memória para Android desenvolvido com Jetpack Compose, projetado para exercitar a memória através de diferentes categorias e níveis de dificuldade.
+🎮 Um jogo de memória para Android desenvolvido com Jetpack Compose
 
-https://img.shields.io/badge/Android-3DDC84?style=for-square&logo=android&logoColor=white
-https://img.shields.io/badge/Kotlin-7F52FF?style=for-square&logo=kotlin&logoColor=white
-https://img.shields.io/badge/Jetpack%2520Compose-4285F4?style=for-square&logo=jetpack-compose&logoColor=white
+🚀 Projetado para exercitar a memória através de diferentes categorias e níveis de dificuldade
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ✨ Características
 
@@ -20,6 +18,9 @@ https://img.shields.io/badge/Jetpack%2520Compose-4285F4?style=for-square&logo=je
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 📸 Screenshots
 
+https://github.com/SilencioPz/MemoryHelper/issues/1#issue-3799353350
+
+https://github.com/SilencioPz/MemoryHelper/issues/2#issue-3799354078
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 🚀 Como Rodar o Projeto
