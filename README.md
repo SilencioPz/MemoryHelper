@@ -1,8 +1,12 @@
+<div align="center">
+    
 🧠 Memory Helper
 
-🎮 Um jogo de memória para Android desenvolvido com Jetpack Compose
+Um jogo de memória para Android desenvolvido com Jetpack Compose
 
-🚀 Projetado para exercitar a memória através de diferentes categorias e níveis de dificuldade
+Projetado para exercitar a memória através de diferentes categorias e níveis de dificuldade
+
+</div>
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ✨ Características
 
