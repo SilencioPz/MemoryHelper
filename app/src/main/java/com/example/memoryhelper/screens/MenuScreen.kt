@@ -24,6 +24,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.memoryhelper.R
 import com.example.memoryhelper.model.IconCategory
+import androidx.compose.runtime.*
+import com.example.memoryhelper.audio.AudioManager
+import com.example.memoryhelper.getAudioManager
 
 @Composable
 fun MenuScreen(
@@ -32,6 +35,11 @@ fun MenuScreen(
 ) {
     var showAboutDialog by remember { mutableStateOf(false) }
     val context = LocalContext.current
+    val audioManager = getAudioManager()
+
+    LaunchedEffect(Unit) {
+        audioManager.playMusic(AudioManager.Music.MENU)
+    }
 
     Column(
         modifier = Modifier
@@ -67,11 +75,14 @@ fun MenuScreen(
 
         IconCategory.values().forEach { category ->
             Button(
-                onClick = { onCategorySelected(category) },
+                onClick = {
+                    audioManager.playSound(AudioManager.Sounds.CLICK)
+                    onCategorySelected(category)
+                },
                 modifier = Modifier
                     .fillMaxWidth(0.85f)
-                    .padding(vertical = 6.dp),
-//                elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+                    .padding(vertical = 6.dp)
+                    .height(60.dp),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = when (category) {
                         IconCategory.CHILD -> Color(0xFF2D5A27)
@@ -80,35 +91,26 @@ fun MenuScreen(
                     }
                 )
             ) {
-                Box(
-                    modifier = Modifier.clickable { onCategorySelected(category) }
-                ) {
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(16.dp),
-                        horizontalArrangement = Arrangement.Center,
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Text(
-                            text = when (category) {
-                                IconCategory.CHILD -> "👶 Crianças"
-                                IconCategory.ADULT -> "👨‍💼 Adultos"
-                                IconCategory.ELDERLY -> "👵 Idosos"
-                            },
-                            fontSize = 18.sp,
-                            color = Color.White,
-                            fontWeight = FontWeight.Medium
-                        )
-                    }
-                }
+                Text(
+                    text = when (category) {
+                        IconCategory.CHILD -> "👶 Crianças"
+                        IconCategory.ADULT -> "👨‍💼 Adultos"
+                        IconCategory.ELDERLY -> "👵 Idosos"
+                    },
+                    fontSize = 18.sp,
+                    color = Color.White,
+                    fontWeight = FontWeight.Medium
+                )
             }
         }
 
         Spacer(modifier = Modifier.height(40.dp))
 
         OutlinedButton(
-            onClick = { showAboutDialog = true },
+            {
+                audioManager.playSound(AudioManager.Sounds.CLICK)
+                showAboutDialog = true
+            },
             modifier = Modifier
                 .fillMaxWidth(0.7f)
                 .padding(vertical = 8.dp),
@@ -149,7 +151,10 @@ fun MenuScreen(
 
     if (showAboutDialog) {
         AboutDialog(
-            onDismiss = { showAboutDialog = false },
+            onDismiss = {
+                audioManager.playSound(AudioManager.Sounds.CLICK)
+                showAboutDialog = false
+            },
             context = context
         )
     }
@@ -160,6 +165,9 @@ fun AboutDialog(
     onDismiss: () -> Unit,
     context: Context
 ) {
+
+    val audioManager = getAudioManager()
+
     AlertDialog(
         onDismissRequest = onDismiss,
         title = {
@@ -212,6 +220,7 @@ fun AboutDialog(
                     textDecoration = TextDecoration.Underline,
                     modifier = Modifier
                         .clickable {
+                            audioManager.playSound(AudioManager.Sounds.CLICK)
                             val intent = Intent(
                                 Intent.ACTION_VIEW,
                                 Uri.parse("https://silenciopz.neocities.org/")
@@ -224,7 +233,10 @@ fun AboutDialog(
         },
         confirmButton = {
             Button(
-                onClick = onDismiss,
+                onClick = {
+                    audioManager.playSound(AudioManager.Sounds.CLICK)
+                    onDismiss()
+                },
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Text(text = "Fechar")

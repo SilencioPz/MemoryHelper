@@ -27,6 +27,12 @@ import androidx.compose.ui.unit.sp
 import com.example.memoryhelper.game.GameManager
 import com.example.memoryhelper.model.GameConfig
 import com.example.memoryhelper.model.MemoryCard
+import androidx.compose.runtime.*
+import com.example.memoryhelper.audio.AudioManager
+import com.example.memoryhelper.getAudioManager
+import com.example.memoryhelper.model.IconCategory
+import kotlinx.coroutines.delay
+
 
 @Composable
 fun GameScreen(
@@ -39,7 +45,18 @@ fun GameScreen(
     var showWinDialog by remember { mutableStateOf(false) }
     var finalScore by remember { mutableStateOf(0) }
 
+    val audioManager = getAudioManager()
     val scope = rememberCoroutineScope()
+
+    LaunchedEffect(config.category) {
+        delay(100)
+
+        when (config.category) {
+            IconCategory.CHILD -> audioManager.playMusic(AudioManager.Music.CHILD)
+            IconCategory.ADULT -> audioManager.playMusic(AudioManager.Music.ADULT)
+            IconCategory.ELDERLY -> audioManager.playMusic(AudioManager.Music.ELDERLY)
+        }
+    }
 
     val gameManager = remember(config) {
         GameManager(
@@ -53,6 +70,7 @@ fun GameScreen(
             },
             onGameCompleted = { completedMoves, score ->
                 finalScore = score
+                audioManager.playSound(AudioManager.Sounds.FINISH)
                 showWinDialog = true
             }
         )
@@ -113,6 +131,8 @@ private fun GameHeader(
     onBack: () -> Unit,
     onRestart: () -> Unit
 ) {
+    val audioManager = getAudioManager()
+
     Card(
         modifier = Modifier.fillMaxWidth(),
         colors = CardDefaults.cardColors(
@@ -126,7 +146,10 @@ private fun GameHeader(
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            IconButton(onClick = onBack) {
+            IconButton(onClick = {
+                audioManager.playSound(AudioManager.Sounds.CLICK)
+                onBack()
+            }) {
                 Icon(
                     imageVector = Icons.Default.ArrowBack,
                     contentDescription = "Voltar ao Menu"
@@ -145,7 +168,10 @@ private fun GameHeader(
                 )
             }
 
-            IconButton(onClick = onRestart) {
+            IconButton(onClick = {
+                audioManager.playSound(AudioManager.Sounds.CLICK)
+                onRestart()
+            }) {
                 Icon(
                     imageVector = Icons.Default.PlayArrow,
                     contentDescription = "Reiniciar Jogo"
@@ -161,6 +187,8 @@ private fun CardGrid(
     difficulty: com.example.memoryhelper.model.Difficulty,
     onCardClicked: (MemoryCard) -> Unit
 ) {
+    val audioManager = getAudioManager()
+
     val columns = when (difficulty) {
         com.example.memoryhelper.model.Difficulty.EASY -> 3
         com.example.memoryhelper.model.Difficulty.MEDIUM -> 4
@@ -187,6 +215,8 @@ private fun MemoryCardItem(
     card: MemoryCard,
     onClick: () -> Unit
 ) {
+    val audioManager = getAudioManager()
+
     val cardColor = if (card.isMatched) {
         Color.Green.copy(alpha = 0.3f)
     } else if (card.isFaceUp) {
@@ -207,7 +237,12 @@ private fun MemoryCardItem(
             )
             .clickable(
                 enabled = !card.isMatched,
-                onClick = onClick
+                onClick = {
+                    if (!card.isFaceUp && !card.isMatched) {
+                        audioManager.playSound(AudioManager.Sounds.CARD_FLIP)
+                    }
+                    onClick()
+                }
             ),
         contentAlignment = Alignment.Center
     ) {
@@ -264,6 +299,8 @@ private fun WinDialog(
     onPlayAgain: () -> Unit,
     onBackToMenu: () -> Unit
 ) {
+    val audioManager = getAudioManager()
+
     AlertDialog(
         onDismissRequest = onDismiss,
         title = {
@@ -300,7 +337,10 @@ private fun WinDialog(
         },
         confirmButton = {
             Button(
-                onClick = onPlayAgain,
+                onClick = {
+                    audioManager.playSound(AudioManager.Sounds.CLICK)
+                    onPlayAgain()
+                },
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Text(text = "Jogar Novamente")
@@ -308,7 +348,10 @@ private fun WinDialog(
         },
         dismissButton = {
             OutlinedButton(
-                onClick = onBackToMenu,
+                onClick = {
+                    audioManager.playSound(AudioManager.Sounds.CLICK)
+                    onBackToMenu()
+                },
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Text(text = "Voltar ao Menu")

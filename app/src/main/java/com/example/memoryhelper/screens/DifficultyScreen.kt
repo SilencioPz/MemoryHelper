@@ -10,9 +10,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.memoryhelper.model.Category
 import com.example.memoryhelper.model.Difficulty
 import com.example.memoryhelper.model.IconCategory
+import androidx.compose.runtime.*
+import com.example.memoryhelper.audio.AudioManager
+import com.example.memoryhelper.getAudioManager
+
 
 @Composable
 fun DifficultyScreen(
@@ -20,6 +23,16 @@ fun DifficultyScreen(
     onDifficultySelected: (Difficulty) -> Unit,
     onBack: () -> Unit
 ) {
+    val audioManager = getAudioManager()
+
+    LaunchedEffect(selectedCategory) {
+        when (selectedCategory) {
+            IconCategory.CHILD -> audioManager.playMusic(AudioManager.Music.CHILD)
+            IconCategory.ADULT -> audioManager.playMusic(AudioManager.Music.ADULT)
+            IconCategory.ELDERLY -> audioManager.playMusic(AudioManager.Music.ELDERLY)
+        }
+    }
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -80,7 +93,10 @@ fun DifficultyScreen(
                     )
 
                     Button(
-                        onClick = { onDifficultySelected(difficulty) },
+                        onClick = {
+                            audioManager.playSound(AudioManager.Sounds.CLICK)
+                            onDifficultySelected(difficulty)
+                        },
                         modifier = Modifier.fillMaxWidth(0.8f)
                     ) {
                         Text(text = "Jogar")
@@ -92,7 +108,10 @@ fun DifficultyScreen(
         Spacer(modifier = Modifier.height(20.dp))
 
         OutlinedButton(
-            onClick = onBack,
+            onClick = {
+                audioManager.playSound(AudioManager.Sounds.CLICK)
+                onBack()
+            },
             modifier = Modifier.fillMaxWidth(0.6f)
         ) {
             Text(text = "Voltar")
