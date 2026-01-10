@@ -247,6 +247,10 @@ junto com este programa. Se não, veja <https://www.gnu.org/licenses/>.
 SilencioPZ
 🌐 [🌐 silenciopz.neocities.org](http://silenciopz.neocities.org)
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Crédito das Músicas: <https://musopen.org/>.
+
+Músicas utilizadas: Beethoven - Adieu au Piano, Beethoven - Symphony Number 9 in D minor, Chopin - Waltz in A minor e Tchaikovsky - The Nutcracker Suite Act 1.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 🙏 Agradecimentos
 
     Ícones de FlatIcon (com adaptações)
