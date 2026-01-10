@@ -245,7 +245,7 @@ junto com este programa. Se não, veja <https://www.gnu.org/licenses/>.
 👤 Autor
 
 SilencioPZ
-🌐 silenciopz.neocities.org
+🌐 <https://www.silenciopz.neocities.org>
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 🙏 Agradecimentos
 
