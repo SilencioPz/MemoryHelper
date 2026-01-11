@@ -247,9 +247,19 @@ junto com este programa. Se não, veja <https://www.gnu.org/licenses/>.
 SilencioPZ
 🌐 [🌐 silenciopz.neocities.org](http://silenciopz.neocities.org)
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Crédito das Músicas: <https://musopen.org/>.
+✅ Créditos
+
+Músicas gratuitas: <https://musopen.org/>.
 
 Músicas utilizadas: Beethoven - Adieu au Piano, Beethoven - Symphony Number 9 in D minor, Chopin - Waltz in A minor e Tchaikovsky - The Nutcracker Suite Act 1.
+
+Ícones: <https://www.flaticon.com/>
+
+Todos os ícones utilizados no jogo foram baixados neste site gratuito.
+
+IA Utilizada: <https://chat.deepseek.com/>
+
+Deepseek me ajudou com o código bruto, polindo e refinando conforme testes realizados.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 🙏 Agradecimentos
 
