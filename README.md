@@ -253,6 +253,10 @@ Músicas gratuitas: <https://musopen.org/>.
 
 Músicas utilizadas: Beethoven - Adieu au Piano, Beethoven - Symphony Number 9 in D minor, Chopin - Waltz in A minor e Tchaikovsky - The Nutcracker Suite Act 1.
 
+Efeitos sonoros: <https://elevenlabs.io/app/sound-effects>
+
+A IA cria quatro tipos de sons, você escolhe o mais interessante e pode utilizar em um projeto.
+
 Ícones: <https://www.flaticon.com/>
 
 Todos os ícones utilizados no jogo foram baixados neste site gratuito.
